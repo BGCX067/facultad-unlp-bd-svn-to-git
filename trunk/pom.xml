@@ -1,0 +1,144 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>ar.com.unlp</groupId>
+  <artifactId>principalProyectos</artifactId>
+  <packaging>pom</packaging>
+  <version>0.0-SNAPSHOT</version>
+  <name>CNE Project POM</name>
+ <!-- hola -->
+ <repositories>
+    <repository>
+      <id>home-private</id>
+      <name>repositorio privado </name>
+      <url>file:///acabrera/repository/repo/</url>
+    </repository>
+  </repositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <modules>
+     <module>consulta</module>
+  </modules>
+  
+  <properties>
+     <spring.version>2.0.2</spring.version>
+     <commons.version>2.2-SNAPSHOT</commons.version>
+     <rbac.version>0.3</rbac.version>
+  </properties>
+
+<reporting>
+	<plugins>
+       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.3</version>
+        <configuration>
+          <doclet>gr.spinellis.umlgraph.doclet.UmlGraphDoc</doclet>
+          <docletArtifact>
+            <groupId>gr.spinellis</groupId>
+            <artifactId>UmlGraph</artifactId>
+            <version>4.4</version>
+          </docletArtifact>
+          <additionalparam>
+                      -inferrel -inferdep -quiet -hide java.* -collpackages
+                      java.util.* -qualify -postfixpackage -nodefontsize 9 -nodefontpackagesize 7
+                       -operations -constructors -visibility -types
+		-link http://java.sun.com/j2se/1.5/docs/api
+                        -all 
+          </additionalparam>
+
+                 <!--      -useimports -inferdepinpackage -->
+        </configuration>
+       </plugin>
+	</plugins>
+</reporting>
+  <build>
+
+
+	<directory>target</directory>
+        <outputDirectory>target/classes</outputDirectory>
+        <finalName>${artifactId}-${version}</finalName>
+        <testOutputDirectory>target/test-classes</testOutputDirectory>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
+        <resources>
+                  <resource>
+                            <directory>src/main/resources</directory>
+                  </resource>
+        </resources>
+        <testResources>
+                  <testResource>
+                         <directory>src/test/resources</directory>
+                  </testResource>
+        </testResources>
+    <defaultGoal>package</defaultGoal>
+    <pluginManagement>
+      <plugins>
+        
+
+ 
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+            <source>1.5</source>
+            <target>1.5</target>
+            <encoding>ISO-8859-1</encoding>
+          </configuration>
+	   <inherited>true</inherited>
+        </plugin>
+	<plugin>
+	   <artifactId>maven-eclipse-plugin</artifactId>
+	   <configuration>
+	       <outputDirectory>${project.build.directory}/eclipse-bin</outputDirectory>
+		 <wtpversion>1.5</wtpversion>
+		 <additionalProjectnatures>
+	            <projectnature>org.maven.ide.eclipse.maven2Nature</projectnature>
+			<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+          	</additionalProjectnatures>
+	          <additionalBuildcommands>
+      	      <buildcommand>org.maven.ide.eclipse.maven2Builder</buildcommand>
+			<buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
+	          </additionalBuildcommands>
+	   </configuration>
+       		<version>2.3-r518983</version> 
+		<inherited>true</inherited>
+	</plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+           <execution>
+             <phase>package</phase>
+             <goals>
+                <goal>jar</goal>
+             </goals>
+           </execution>
+        </executions>
+     </plugin>
+      </plugins>
+    </pluginManagement>  
+  </build>
+  <developers>
+        <developer>
+	    <name>Veronica Velastiqui</name>	
+	    <id>verov</id>	
+	    <email>veronicavelastiqui@gmail.com</email>	
+	    <organization>facu</organization>
+	</developer>
+        <developer>
+	    <name>Arturo Cabrera</name>	
+	    <id>turo</id>	
+	    <email>turo.cabrera@gmail.com</email>	
+	    <organization>facu</organization>
+	</developer>
+    </developers>
+</project>
